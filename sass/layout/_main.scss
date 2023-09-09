@@ -1,0 +1,16 @@
+main{
+    padding: 20px 80px;
+    background-color: $color-light-grey;
+    .filter_section{
+        display: flex;
+        gap: 60px;
+        p{
+            flex-grow: 1;
+            line-height: 60px;
+            text-align: right;
+            font-size: 1.2rem;
+            font-weight: 400;
+            font-family: 'Anton', sans-serif;
+        }
+    }
+}

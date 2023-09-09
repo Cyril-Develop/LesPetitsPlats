@@ -1,0 +1,258 @@
+*, ::before, ::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  max-width: 1400px;
+  margin: 0 auto;
+  font-size: 62.5%;
+}
+
+label, button, input {
+  border: none;
+  outline: none;
+}
+
+button, label {
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+.dropdown_wrapper {
+  position: relative;
+  width: 200px;
+  height: 60px;
+}
+
+.dropdown {
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+  border-radius: 10px;
+  background-color: #fff;
+  overflow: hidden;
+}
+.dropdown_btn {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #fff;
+  font-family: "Manrope", sans-serif;
+}
+.dropdown_btn:hover, .dropdown_btn:focus {
+  background-color: #FFD15B;
+}
+.dropdown .dropdown_content {
+  margin: 0 10px 0;
+  max-height: 0;
+  transition: max-height 0.1s ease-in-out;
+}
+.dropdown .dropdown_content div {
+  position: relative;
+  padding: 10px 0;
+}
+.dropdown .dropdown_content div label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 15px;
+  width: 15px;
+  background-color: #fff;
+}
+.dropdown .dropdown_content div label::after {
+  content: "\f002";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 600;
+  color: #C6C6C6;
+}
+.dropdown .dropdown_content div input {
+  width: 100%;
+  height: 30px;
+  border: 1px solid #C6C6C6;
+  outline: none;
+  padding-left: 5px;
+  background-color: #fff;
+}
+.dropdown .dropdown_content div button {
+  position: absolute;
+  right: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 15px;
+  width: 15px;
+  background-color: #fff;
+}
+.dropdown .dropdown_content div button::after {
+  content: "\f00d";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 600;
+  color: #C6C6C6;
+}
+.dropdown .active {
+  max-height: 200px;
+}
+
+.card_section {
+  padding: 40px 0;
+  background-color: aqua;
+}
+.card_section .card {
+  width: 25%;
+  height: 500px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid black;
+}
+.card_section .card img {
+  width: 100%;
+  height: 40%;
+  object-fit: cover;
+  object-position: center;
+}
+.card_section .card_infos {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+.card_section .card_infos h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.card_section .card_infos_instructions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.card_section .card_infos_ingredients {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.card_section .card_infos_ingredients ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 0;
+}
+.card_section .card_infos_ingredients ul li {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 60vh;
+  padding: 40px 60px;
+}
+.header::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(../../images/utils/banner.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: brightness(0.7);
+}
+.header_logo {
+  width: 200px;
+}
+.header_cta {
+  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+.header_cta h1 {
+  display: flex;
+  flex-direction: column;
+  color: #FFD15B;
+  font-family: "Anton", sans-serif;
+  font-weight: 100;
+  font-size: 2.8rem;
+  text-transform: uppercase;
+}
+.header_cta div {
+  position: relative;
+  width: 80%;
+}
+.header_cta div input {
+  width: 100%;
+  height: 70px;
+  padding-left: 30px;
+  font-size: 1.4rem;
+  border-radius: 10px;
+}
+.header_cta div input:focus {
+  outline: 2px solid #FFD15B;
+}
+.header_cta div label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  height: 50px;
+  width: 50px;
+  border-radius: 10px;
+  background-color: #000;
+}
+.header_cta div label:focus, .header_cta div label:hover {
+  background-color: #FFD15B;
+}
+.header_cta div label:focus::after, .header_cta div label:hover::after {
+  color: #000;
+}
+.header_cta div label::after {
+  content: "\f002";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 600;
+  font-size: 1.6rem;
+  color: #fff;
+}
+
+main {
+  padding: 20px 80px;
+  background-color: #C6C6C6;
+}
+main .filter_section {
+  display: flex;
+  gap: 60px;
+}
+main .filter_section p {
+  flex-grow: 1;
+  line-height: 60px;
+  text-align: right;
+  font-size: 1.2rem;
+  font-weight: 400;
+  font-family: "Anton", sans-serif;
+}
+
+/*# sourceMappingURL=style.css.map */
