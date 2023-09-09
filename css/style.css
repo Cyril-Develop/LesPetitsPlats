@@ -31,7 +31,6 @@ ul {
 
 .dropdown {
   position: absolute;
-  z-index: 100;
   width: 100%;
   border-radius: 10px;
   background-color: #fff;
@@ -40,6 +39,7 @@ ul {
 .dropdown_btn {
   padding: 15px;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   height: 60px;
@@ -63,6 +63,7 @@ ul {
 }
 .dropdown .dropdown_content div label {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   position: absolute;
