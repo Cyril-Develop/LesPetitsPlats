@@ -12,6 +12,7 @@ const displayRecipes = async () => {
         .map(recipe => new Recipe(recipe))
         .forEach(recipe => {
             const template = new RecipeCard(recipe);
+            template.createCard();
         })
 };
 

@@ -108,15 +108,17 @@ ul {
 }
 
 .card_section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+  flex-wrap: wrap;
+  gap: 50px;
   padding: 40px 0;
-  background-color: aqua;
 }
 .card_section .card {
-  width: 25%;
-  height: 500px;
+  max-height: 600px;
   border-radius: 10px;
   overflow: hidden;
-  border: 1px solid black;
+  background-color: #fff;
 }
 .card_section .card img {
   width: 100%;
@@ -139,10 +141,22 @@ ul {
   flex-direction: column;
   gap: 10px;
 }
+.card_section .card_infos_instructions h3 {
+  font-family: "manrope", sans-serif;
+  text-transform: uppercase;
+  color: #7A7A7A;
+  letter-spacing: 2px;
+}
 .card_section .card_infos_ingredients {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+.card_section .card_infos_ingredients h3 {
+  font-family: "manrope", sans-serif;
+  text-transform: uppercase;
+  color: #7A7A7A;
+  letter-spacing: 2px;
 }
 .card_section .card_infos_ingredients ul {
   display: flex;
