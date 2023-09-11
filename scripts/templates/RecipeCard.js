@@ -6,6 +6,17 @@ export default class RecipeCard {
         const cardSection = document.querySelector('.card_section');
         const cardContent = `
             <article class="card" data-id=${this.recipe.id}>
+                ${
+                    this.recipe.time > 0
+                        ? ` <p class="card_time">
+                            ${
+                                this.recipe.time > 60
+                                    ? `${Math.floor(this.recipe.time / 60)} h ${this.recipe.time % 60}`
+                                    : `${this.recipe.time} min`
+                            }
+                            </p>`
+                        : ''
+                }
                 <img src="./images/recipes/${this.recipe.image}" alt="${this.recipe.name}">
                 <div class="card_infos">
                     <h2>${this.recipe.name}</h2>

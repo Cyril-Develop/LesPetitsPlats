@@ -24,6 +24,7 @@ ul {
 }
 
 .dropdown_wrapper {
+  z-index: 100;
   position: relative;
   width: 200px;
   height: 60px;
@@ -53,13 +54,13 @@ ul {
   background-color: #FFD15B;
 }
 .dropdown .dropdown_content {
-  margin: 0 10px 0;
+  overflow-y: scroll;
   max-height: 0;
   transition: max-height 0.1s ease-in-out;
 }
 .dropdown .dropdown_content div {
   position: relative;
-  padding: 10px 0;
+  margin: 10px 10px 10px;
 }
 .dropdown .dropdown_content div label {
   display: flex;
@@ -103,6 +104,14 @@ ul {
   font-weight: 600;
   color: #C6C6C6;
 }
+.dropdown .dropdown_content_list li {
+  padding: 5px 5px 5px 10px;
+  font-size: 1rem;
+  font-family: "Manrope", sans-serif;
+}
+.dropdown .dropdown_content_list li:hover {
+  background-color: #FFD15B;
+}
 .dropdown .active {
   max-height: 200px;
 }
@@ -115,10 +124,21 @@ ul {
   padding: 40px 0;
 }
 .card_section .card {
+  position: relative;
   height: 600px;
   border-radius: 10px;
   overflow: hidden;
   background-color: #fff;
+}
+.card_section .card_time {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-family: "Manrope", sans-serif;
+  background-color: #FFD15B;
 }
 .card_section .card img {
   width: 100%;

@@ -1,4 +1,4 @@
-export default class Recipe {
+export default class RecipeCard {
     constructor(data) {
         this.id = data.id
         this.image = data.image
