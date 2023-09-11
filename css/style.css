@@ -115,7 +115,7 @@ ul {
   padding: 40px 0;
 }
 .card_section .card {
-  max-height: 600px;
+  height: 600px;
   border-radius: 10px;
   overflow: hidden;
   background-color: #fff;
@@ -129,44 +129,63 @@ ul {
 .card_section .card_infos {
   display: flex;
   flex-direction: column;
+  height: 60%;
   gap: 20px;
   padding: 20px;
+  overflow-y: scroll;
+}
+.card_section .card_infos::-webkit-scrollbar {
+  width: 8px;
+}
+.card_section .card_infos::-webkit-scrollbar-thumb {
+  background-color: #FFD15B;
 }
 .card_section .card_infos h2 {
+  font-family: "Anton", sans-serif;
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 100;
 }
 .card_section .card_infos_instructions {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
+  font-family: "Manrope", sans-serif;
 }
 .card_section .card_infos_instructions h3 {
-  font-family: "manrope", sans-serif;
   text-transform: uppercase;
   color: #7A7A7A;
   letter-spacing: 2px;
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+.card_section .card_infos_instructions p {
+  font-size: 0.9rem;
 }
 .card_section .card_infos_ingredients {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
+  font-family: "Manrope", sans-serif;
 }
 .card_section .card_infos_ingredients h3 {
-  font-family: "manrope", sans-serif;
   text-transform: uppercase;
   color: #7A7A7A;
   letter-spacing: 2px;
+  font-size: 1.2rem;
 }
 .card_section .card_infos_ingredients ul {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px 0;
+  gap: 20px 0;
+  font-size: 0.9rem;
 }
 .card_section .card_infos_ingredients ul li {
   display: flex;
   flex-direction: column;
   width: 50%;
+}
+.card_section .card_infos_ingredients ul li span:nth-child(1) {
+  font-weight: bold;
 }
 
 .header {

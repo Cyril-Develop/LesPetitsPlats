@@ -29,7 +29,7 @@
         h1{
             @include flex(column);
             color: $color-primary;
-            font-family: 'Anton', sans-serif;
+            font-family: $title-typo;
             font-weight: 100;
             font-size: 2.8rem;
             text-transform: uppercase;

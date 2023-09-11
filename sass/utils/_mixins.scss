@@ -9,4 +9,11 @@
     @if $align {
         align-items: $align;
     };
-}
+};
+
+@mixin font-awesome($unicode) {
+    content: $unicode;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 600;
+    color: $color-light-grey;
+};

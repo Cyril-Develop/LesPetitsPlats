@@ -18,7 +18,7 @@
         font-size: 1rem;
         font-weight: 600;
         background-color: $color-light;
-        font-family: 'Manrope', sans-serif;
+        font-family: $texte-typo;
         &:hover, &:focus{
             background-color: $color-primary;
         }
@@ -40,10 +40,7 @@
                 width: 15px;
                 background-color: $color-light;
                 &::after{
-                    content: '\f002';
-                    font-family:  "Font Awesome 5 Free";
-                    font-weight: 600;
-                    color: $color-light-grey;
+                    @include font-awesome('\f002');
                 }
             }
             input{
@@ -63,10 +60,7 @@
                 width: 15px;
                 background-color: $color-light;
                 &::after{
-                    content: '\f00d';
-                    font-family:  "Font Awesome 5 Free";
-                    font-weight: 600;
-                    color: $color-light-grey;
+                    @include font-awesome('\f00d');
                 }
             }
         }

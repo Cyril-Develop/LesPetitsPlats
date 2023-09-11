@@ -5,9 +5,9 @@
     gap: 50px;
     padding: 40px 0;
     .card{
-        max-height: 600px;
+        height: 600px;
         border-radius: 10px;
-        overflow: hidden;
+        overflow:hidden;
         background-color: $color-light;
         img{
             width: 100%;
@@ -16,43 +16,58 @@
             object-position: center;
         }
         &_infos{
-            display: flex;
-            flex-direction: column;
+            @include flex(column);
+            height: 60%;
             gap: 20px;
             padding: 20px;
+            overflow-y: scroll;
+            &::-webkit-scrollbar {
+                width: 8px;
+            }
+            &::-webkit-scrollbar-thumb{
+                background-color: $color-primary;
+            }
             h2{
+                font-family: $title-typo;
                 font-size: 1.5rem;
-                font-weight: 700;
+                font-weight: 100;
             }
             &_instructions{
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
+                @include flex(column);
+                gap: 20px;
+                font-family: $texte-typo;
                 h3{
-                    font-family: "manrope", sans-serif;
                     text-transform: uppercase;
                     color: $color-grey;
                     letter-spacing: 2px;
+                    font-size: 1.2rem;
+                    font-weight: 900;
+                }
+                p{
+                    font-size: .9rem;
                 }
             }
             &_ingredients{
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
+                @include flex(column);
+                gap: 20px;
+                font-family: $texte-typo;
                 h3{
-                    font-family: "manrope", sans-serif;
                     text-transform: uppercase;
                     color: $color-grey;
                     letter-spacing: 2px;
+                    font-size: 1.2rem;
                 }
                 ul{
                     display: flex;
                     flex-wrap: wrap;
-                    gap: 10px 0;
+                    gap: 20px 0;
+                    font-size: .9rem;
                     li{
-                        display: flex;
-                        flex-direction: column;
+                        @include flex(column);
                         width: 50%;
+                        span:nth-child(1) {
+                            font-weight: bold;
+                        }
                     }
                 }
             }
