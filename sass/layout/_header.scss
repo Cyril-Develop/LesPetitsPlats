@@ -1,9 +1,15 @@
-.header{
+.header {
     position: relative;
     @include flex(column);
-    height: 60vh;
+    height: 50vh;
     padding: 40px 60px;
-    &::after{
+
+    @media screen and (max-width: 900px) {
+        padding: 40px 20px;
+        height: 350px;
+    }
+
+    &::after {
         content: "";
         z-index: -1;
         position: absolute;
@@ -14,40 +20,63 @@
         background: url(../../images/utils/banner.jpg);
         background-position: center;
         background-repeat: no-repeat;
-        background-size: cover; 
+        background-size: cover;
         filter: brightness(.7);
     }
-    &_logo{
-       width: 200px;
+
+    &_logo {
+        width: 200px;
     }
-    &_cta{
+
+    &_cta {
         text-align: center;
         flex-grow: 1;
         @include flex(column, center, center);
         gap: 30px;
         margin-top: 20px;
-        h1{
+
+        h1 {
             @include flex(column);
             color: $color-primary;
             font-family: $title-typo;
             font-weight: 100;
-            font-size: 2.8rem;
+            text-align: left;
+            font-size: clamp(1.5rem, 4vw, 2.8rem);
             text-transform: uppercase;
         }
-        div{
+
+        div {
             position: relative;
-            width: 80%;
-            input{             
+            max-width: 1024px;
+            width: 100%;
+
+            input {
                 width: 100%;
                 height: 70px;
                 padding-left: 30px;
-                font-size: 1.4rem;
+                font-size: clamp(1.2rem, 2vw, 1.6rem);
                 border-radius: 10px;
-                &:focus{
+
+                &::placeholder {
+                    font-size: clamp(.7rem, 3vw, 1.6rem);
+
+
+                }
+
+                &:focus {
                     outline: 2px solid $color-primary;
                 }
+
+                @media screen and (max-width: 900px) {
+                    padding-left: 15px;
+                }
+
+                @media screen and (max-width: 550px) {
+                    height: 50px;
+                }
             }
-            label{
+
+            label {
                 @include flex(column, center, center);
                 position: absolute;
                 right: 10px;
@@ -56,17 +85,27 @@
                 width: 50px;
                 border-radius: 10px;
                 background-color: $color-dark;
-                &:focus, &:hover{
+
+                @media screen and (max-width: 550px) {
+                    height: 30px;
+                    width: 30px;
+                }
+
+                &:focus,
+                &:hover {
                     background-color: $color-primary;
                 }
-                &:focus::after, &:hover::after{
+
+                &:focus::after,
+                &:hover::after {
                     color: $color-dark;
                 }
-                &::after{
+
+                &::after {
                     content: '\f002';
-                    font-family:  "Font Awesome 5 Free";
+                    font-family: "Font Awesome 5 Free";
                     font-weight: 600;
-                    font-size: 1.6rem;
+                    font-size: clamp(1rem, 2vw, 1.6rem);
                     color: $color-light;
                 }
             }

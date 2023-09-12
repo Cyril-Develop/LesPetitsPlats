@@ -1,17 +1,18 @@
-.dropdown_wrapper{
+.dropdown_wrapper {
     z-index: 100;
     position: relative;
     width: 200px;
     height: 60px;
 }
 
-.dropdown{
+.dropdown {
     position: absolute;
     width: 100%;
     border-radius: 10px;
     background-color: $color-light;
     overflow: hidden;
-    &_btn{
+
+    &_btn {
         padding: 15px;
         @include flex(row, space-between, center);
         height: 60px;
@@ -20,18 +21,23 @@
         font-weight: 600;
         background-color: $color-light;
         font-family: $texte-typo;
-        &:hover, &:focus{
+
+        &:hover,
+        &:focus {
             background-color: $color-primary;
         }
     }
-    .dropdown_content{
+
+    .dropdown_content {
         overflow-y: scroll;
         max-height: 0;
         transition: max-height 0.1s ease-in-out;
-        div{
+
+        div {
             position: relative;
-            margin: 10px 10px 10px;
-            label{
+            margin: 10px 15px;
+
+            label {
                 @include flex(row, center, center);
                 position: absolute;
                 right: 5px;
@@ -40,19 +46,23 @@
                 height: 15px;
                 width: 15px;
                 background-color: $color-light;
-                &::after{
+
+                &::after {
                     @include font-awesome('\f002');
                 }
             }
-            input{
+
+            input {
                 width: 100%;
                 height: 30px;
                 border: 1px solid $color-light-grey;
                 outline: none;
                 padding-left: 5px;
+                font-family: $texte-typo;
                 background-color: $color-light;
             }
-            button{
+
+            button {
                 position: absolute;
                 right: 25px;
                 top: 50%;
@@ -60,23 +70,32 @@
                 height: 15px;
                 width: 15px;
                 background-color: $color-light;
-                &::after{
+
+                &::after {
                     @include font-awesome('\f00d');
                 }
             }
         }
-        &_list{
-            li{
-                padding: 5px 5px 5px 10px;
+
+        &_list {
+            li {
+                padding: 5px 5px 5px 15px;
                 font-size: 1rem;
                 font-family: $texte-typo;
-                &:hover{
+                cursor: pointer;
+
+                &:last-child {
+                    margin-bottom: 10px;
+                }
+
+                &:hover {
                     background-color: $color-primary;
                 }
             }
         }
     }
-    .active{
-        max-height: 200px;
+
+    .active {
+        max-height: 250px;
     }
 }

@@ -21,27 +21,25 @@ export default class Filter {
     createFilter() {
         this.extractUniqueProperties();
     
-        // Convertissez les ensembles (Sets) en tableaux
+        // Ensembles (Sets) en tableaux
         const ingredientsArray = Array.from(this.ingredients);
         const appliancesArray = Array.from(this.appliances);
         const ustensilsArray = Array.from(this.ustensils);
     
-        // Récupérez la section de filtre
-        const filterSection = document.querySelector('.filter_section');
-    
-        // Générez le contenu HTML pour chaque tableau
+        const numberOfRecipes = document.querySelector('.numberRecipes');
+        numberOfRecipes.textContent = `${this.recipes.length} recettes`;
+        
         const ingredientsDropdown = this.createFilterDropdown('Ingrédients', ingredientsArray, 'ingredients');
         const appliancesDropdown = this.createFilterDropdown('Appareils', appliancesArray, 'appliances');
         const ustensilsDropdown = this.createFilterDropdown('Ustensiles', ustensilsArray, 'ustensils');
-    
-        // Ajoutez les boutons déroulants à la section de filtre
-        filterSection.appendChild(ingredientsDropdown);
-        filterSection.appendChild(appliancesDropdown);
-        filterSection.appendChild(ustensilsDropdown);
+        
+        const filterSection = document.querySelector('.filter_section');
+
+        filterSection.insertBefore(ingredientsDropdown, numberOfRecipes);
+        filterSection.insertBefore(appliancesDropdown, numberOfRecipes);
+        filterSection.insertBefore(ustensilsDropdown, numberOfRecipes);
     }
-    
     createFilterDropdown(title, items, id) {
-        // Utilisation de balises de modèle pour générer le contenu HTML
         const dropdownHTML = `
             <div class="dropdown_wrapper">
                 <div class="dropdown"> 
@@ -64,12 +62,9 @@ export default class Filter {
             </div>
         `;
     
-        // Créez un élément div pour contenir le contenu HTML généré
         const dropdownWrapper = document.createElement('div');
         dropdownWrapper.innerHTML = dropdownHTML;
     
-        // Retournez le contenu HTML
         return dropdownWrapper;
-    }
-    
+    } 
 }

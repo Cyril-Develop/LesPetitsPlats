@@ -2,7 +2,7 @@ import Api from '../api/Api.js';
 import Recipe from '../models/Recipe.js';
 import RecipeCard from '../templates/RecipeCard.js';
 import Filter from '../templates/Filter.js';
-import { opencloseFilter } from '../utils/filter.js';
+import { openCloseFilter } from '../utils/filter.js';
 
 const recipesApi = new Api('./data/recipes.json');
 const recipes = await recipesApi.get();
@@ -21,7 +21,6 @@ const displayRecipes = async () => {
         })
 };
 
-
 displayFilters();
 displayRecipes();
-opencloseFilter();
+openCloseFilter();

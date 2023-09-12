@@ -1,4 +1,4 @@
-export const opencloseFilter = () => {
+export const openCloseFilter = () => {
     const btnDrop = document.querySelectorAll('.dropdown_btn')
 
     btnDrop.forEach(btn => {
