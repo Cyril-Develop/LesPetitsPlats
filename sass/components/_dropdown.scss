@@ -3,6 +3,14 @@
     position: relative;
     width: 200px;
     height: 60px;
+
+    @media screen and (max-width: 1160px) {
+        width: 150px;
+    }
+
+    @media screen and (max-width: 530px) {
+        width: 280px;
+    }
 }
 
 .dropdown {
@@ -11,6 +19,10 @@
     border-radius: 10px;
     background-color: $color-light;
     overflow: hidden;
+
+    @media screen and (max-width: 500px) {
+        box-shadow: 0 0 8px 0 rgba(0, 0, 0, .2);
+    }
 
     &_btn {
         padding: 15px;
@@ -26,6 +38,11 @@
         &:focus {
             background-color: $color-primary;
         }
+
+        @media screen and (max-width: 1160px) {
+            padding: 10px;
+            height: 50px;
+        }
     }
 
     .dropdown_content {
@@ -33,9 +50,15 @@
         max-height: 0;
         transition: max-height 0.1s ease-in-out;
 
+       
+
         div {
             position: relative;
             margin: 10px 15px;
+
+            @media screen and (max-width: 1160px) {
+                margin: 5px 10px;
+            }
 
             label {
                 @include flex(row, center, center);
@@ -90,6 +113,10 @@
 
                 &:hover {
                     background-color: $color-primary;
+                }
+
+                @media screen and (max-width: 1160px) {
+                    padding: 5px 5px 5px 10px;
                 }
             }
         }

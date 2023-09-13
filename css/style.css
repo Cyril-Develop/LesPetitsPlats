@@ -29,6 +29,16 @@ ul {
   width: 200px;
   height: 60px;
 }
+@media screen and (max-width: 1160px) {
+  .dropdown_wrapper {
+    width: 150px;
+  }
+}
+@media screen and (max-width: 530px) {
+  .dropdown_wrapper {
+    width: 280px;
+  }
+}
 
 .dropdown {
   position: absolute;
@@ -36,6 +46,11 @@ ul {
   border-radius: 10px;
   background-color: #fff;
   overflow: hidden;
+}
+@media screen and (max-width: 500px) {
+  .dropdown {
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2);
+  }
 }
 .dropdown_btn {
   padding: 15px;
@@ -53,6 +68,12 @@ ul {
 .dropdown_btn:hover, .dropdown_btn:focus {
   background-color: #FFD15B;
 }
+@media screen and (max-width: 1160px) {
+  .dropdown_btn {
+    padding: 10px;
+    height: 50px;
+  }
+}
 .dropdown .dropdown_content {
   overflow-y: scroll;
   max-height: 0;
@@ -61,6 +82,11 @@ ul {
 .dropdown .dropdown_content div {
   position: relative;
   margin: 10px 15px;
+}
+@media screen and (max-width: 1160px) {
+  .dropdown .dropdown_content div {
+    margin: 5px 10px;
+  }
 }
 .dropdown .dropdown_content div label {
   display: flex;
@@ -117,6 +143,11 @@ ul {
 .dropdown .dropdown_content_list li:hover {
   background-color: #FFD15B;
 }
+@media screen and (max-width: 1160px) {
+  .dropdown .dropdown_content_list li {
+    padding: 5px 5px 5px 10px;
+  }
+}
 .dropdown .active {
   max-height: 250px;
 }
@@ -131,14 +162,15 @@ ul {
 @media screen and (max-width: 1160px) {
   .card_section {
     gap: 30px;
+    padding: 20px 0;
   }
 }
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 910px) {
   .card_section {
-    grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
   }
 }
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 500px) {
   .card_section {
     grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
   }
@@ -150,7 +182,7 @@ ul {
   overflow: hidden;
   background-color: #fff;
 }
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 500px) {
   .card_section .card {
     height: 400px;
   }
@@ -171,6 +203,11 @@ ul {
   object-fit: cover;
   object-position: center;
 }
+@media screen and (max-width: 500px) {
+  .card_section .card img {
+    height: 50%;
+  }
+}
 .card_section .card_infos {
   display: flex;
   flex-direction: column;
@@ -179,7 +216,7 @@ ul {
   padding: 20px;
   overflow-y: scroll;
 }
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 500px) {
   .card_section .card_infos {
     padding: 10px;
     gap: 15px;
@@ -196,7 +233,7 @@ ul {
   gap: 20px;
   font-family: "Manrope", sans-serif;
 }
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 500px) {
   .card_section .card_infos_instructions {
     gap: 10px;
   }
@@ -217,7 +254,7 @@ ul {
   gap: 20px;
   font-family: "Manrope", sans-serif;
 }
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 500px) {
   .card_section .card_infos_ingredients {
     gap: 10px;
   }
@@ -234,7 +271,7 @@ ul {
   gap: 20px 0;
   font-size: clamp(0.9rem, 1vw, 0.9rem);
 }
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 500px) {
   .card_section .card_infos_ingredients ul {
     gap: 10px 0px;
   }
@@ -255,7 +292,7 @@ ul {
   height: 50vh;
   padding: 40px 60px;
 }
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1160px) {
   .header {
     padding: 40px 20px;
     height: 350px;
@@ -311,18 +348,14 @@ ul {
   border-radius: 10px;
 }
 .header_cta div input::placeholder {
-  font-size: clamp(0.7rem, 3vw, 1.6rem);
+  font-size: clamp(0.7rem, 2vw, 1.6rem);
 }
 .header_cta div input:focus {
   outline: 2px solid #FFD15B;
 }
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1160px) {
   .header_cta div input {
-    padding-left: 15px;
-  }
-}
-@media screen and (max-width: 550px) {
-  .header_cta div input {
+    padding-left: 10px;
     height: 50px;
   }
 }
@@ -339,10 +372,12 @@ ul {
   border-radius: 10px;
   background-color: #000;
 }
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 1160px) {
   .header_cta div label {
-    height: 30px;
-    width: 30px;
+    right: 0;
+    top: 0;
+    border-bottom-left-radius: unset;
+    border-top-left-radius: unset;
   }
 }
 .header_cta div label:focus, .header_cta div label:hover {
@@ -355,15 +390,20 @@ ul {
   content: "\f002";
   font-family: "Font Awesome 5 Free";
   font-weight: 600;
-  font-size: clamp(1rem, 2vw, 1.6rem);
+  font-size: 1.4rem;
   color: #fff;
+}
+@media screen and (max-width: 1160px) {
+  .header_cta div label::after {
+    font-size: 1rem;
+  }
 }
 
 main {
   padding: 40px 80px 0;
   background-color: #C6C6C6;
 }
-@media screen and (max-width: 1030px) {
+@media screen and (max-width: 1160px) {
   main {
     padding: 20px 20px 0;
   }
@@ -372,6 +412,18 @@ main .filter_section {
   display: flex;
   flex-wrap: wrap-reverse;
   gap: 60px;
+  width: 100%;
+}
+@media screen and (max-width: 910px) {
+  main .filter_section {
+    gap: 20px;
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 530px) {
+  main .filter_section {
+    gap: 0 10px;
+  }
 }
 main .filter_section p {
   flex-grow: 1;
@@ -380,6 +432,14 @@ main .filter_section p {
   font-size: 1.2rem;
   font-weight: 400;
   font-family: "Anton", sans-serif;
+}
+@media screen and (max-width: 640px) {
+  main .filter_section p {
+    text-align: center;
+    flex-grow: 0;
+    width: 100%;
+    line-height: 50px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

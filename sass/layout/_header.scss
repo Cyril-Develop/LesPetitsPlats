@@ -4,7 +4,7 @@
     height: 50vh;
     padding: 40px 60px;
 
-    @media screen and (max-width: 900px) {
+    @media screen and (max-width: 1160px) {
         padding: 40px 20px;
         height: 350px;
     }
@@ -58,22 +58,18 @@
                 border-radius: 10px;
 
                 &::placeholder {
-                    font-size: clamp(.7rem, 3vw, 1.6rem);
-
-
+                    font-size: clamp(.7rem, 2vw, 1.6rem);
                 }
 
                 &:focus {
                     outline: 2px solid $color-primary;
                 }
 
-                @media screen and (max-width: 900px) {
-                    padding-left: 15px;
-                }
-
-                @media screen and (max-width: 550px) {
+                @media screen and (max-width: 1160px) {
+                    padding-left: 10px;
                     height: 50px;
                 }
+
             }
 
             label {
@@ -86,9 +82,11 @@
                 border-radius: 10px;
                 background-color: $color-dark;
 
-                @media screen and (max-width: 550px) {
-                    height: 30px;
-                    width: 30px;
+                @media screen and (max-width: 1160px) {
+                    right: 0;
+                    top: 0;
+                    border-bottom-left-radius: unset;
+                    border-top-left-radius: unset;
                 }
 
                 &:focus,
@@ -105,8 +103,11 @@
                     content: '\f002';
                     font-family: "Font Awesome 5 Free";
                     font-weight: 600;
-                    font-size: clamp(1rem, 2vw, 1.6rem);
+                    font-size: 1.4rem;
                     color: $color-light;
+                    @media screen and (max-width: 1160px) {
+                        font-size: 1rem;
+                    }
                 }
             }
         }
