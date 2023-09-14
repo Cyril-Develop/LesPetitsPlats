@@ -1,4 +1,4 @@
-export default class Filter {
+export default class Dropdown {
     constructor(data) {
         this.recipes = data.recipes;
         this.ingredients = new Set();
@@ -26,7 +26,7 @@ export default class Filter {
         const appliancesArray = Array.from(this.appliances);
         const ustensilsArray = Array.from(this.ustensils);
     
-        const numberOfRecipes = document.querySelector('.numberRecipes');
+        const numberOfRecipes = document.querySelector('.recipes_count');
         numberOfRecipes.textContent = `${this.recipes.length} recettes`;
         
         const ingredientsDropdown = this.createFilterDropdown('Ingrédients', ingredientsArray, 'ingredients');

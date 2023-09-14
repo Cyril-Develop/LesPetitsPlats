@@ -11,9 +11,24 @@
     };
 };
 
-@mixin font-awesome($unicode) {
+@mixin font-awesome($unicode, $size, $color) {
     content: $unicode;
     font-family: "Font Awesome 5 Free";
     font-weight: 600;
-    color: $color-light-grey;
+    font-size: $size;
+    color: $color;
 };
+
+@mixin button-delete($right){
+    position: absolute;
+    right: $right;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: $color-light;
+
+    &:hover::after,
+    &:focus::after{
+        color: $color-primary;
+    }
+
+}

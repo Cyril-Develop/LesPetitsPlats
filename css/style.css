@@ -101,46 +101,54 @@ ul {
   width: 15px;
   background-color: #fff;
 }
+.dropdown .dropdown_content div label:hover::after, .dropdown .dropdown_content div label:focus::after {
+  color: #FFD15B;
+}
 .dropdown .dropdown_content div label::after {
   content: "\f002";
   font-family: "Font Awesome 5 Free";
   font-weight: 600;
-  color: #C6C6C6;
+  font-size: 0.9rem;
+  color: #7A7A7A;
 }
 .dropdown .dropdown_content div input {
   width: 100%;
   height: 30px;
-  border: 1px solid #C6C6C6;
+  border: 1px solid #7A7A7A;
   outline: none;
   padding-left: 5px;
   font-family: "Manrope", sans-serif;
   background-color: #fff;
 }
 .dropdown .dropdown_content div button {
+  display: none;
   position: absolute;
   right: 25px;
   top: 50%;
   transform: translateY(-50%);
-  height: 15px;
-  width: 15px;
   background-color: #fff;
+}
+.dropdown .dropdown_content div button:hover::after, .dropdown .dropdown_content div button:focus::after {
+  color: #FFD15B;
 }
 .dropdown .dropdown_content div button::after {
   content: "\f00d";
   font-family: "Font Awesome 5 Free";
   font-weight: 600;
-  color: #C6C6C6;
+  font-size: 0.9rem;
+  color: #7A7A7A;
 }
 .dropdown .dropdown_content_list li {
   padding: 5px 5px 5px 15px;
   font-size: 1rem;
   font-family: "Manrope", sans-serif;
+  outline: none;
   cursor: pointer;
 }
 .dropdown .dropdown_content_list li:last-child {
   margin-bottom: 10px;
 }
-.dropdown .dropdown_content_list li:hover {
+.dropdown .dropdown_content_list li:hover, .dropdown .dropdown_content_list li:focus {
   background-color: #FFD15B;
 }
 @media screen and (max-width: 1160px) {
@@ -344,6 +352,7 @@ ul {
   width: 100%;
   height: 70px;
   padding-left: 30px;
+  font-family: "Manrope", sans-serif;
   font-size: clamp(1.2rem, 2vw, 1.6rem);
   border-radius: 10px;
 }
@@ -396,6 +405,34 @@ ul {
 @media screen and (max-width: 1160px) {
   .header_cta div label::after {
     font-size: 1rem;
+  }
+}
+.header_cta div button {
+  display: none;
+  position: absolute;
+  right: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #fff;
+}
+.header_cta div button:hover::after, .header_cta div button:focus::after {
+  color: #FFD15B;
+}
+@media screen and (max-width: 1160px) {
+  .header_cta div button {
+    right: 65px;
+  }
+}
+.header_cta div button::after {
+  content: "\f00d";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: #7A7A7A;
+}
+@media screen and (max-width: 1160px) {
+  .header_cta div button::after {
+    font-size: 1.2rem;
   }
 }
 

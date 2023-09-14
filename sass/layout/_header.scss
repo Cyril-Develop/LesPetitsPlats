@@ -54,6 +54,7 @@
                 width: 100%;
                 height: 70px;
                 padding-left: 30px;
+                font-family: $texte-typo;
                 font-size: clamp(1.2rem, 2vw, 1.6rem);
                 border-radius: 10px;
 
@@ -100,13 +101,30 @@
                 }
 
                 &::after {
-                    content: '\f002';
-                    font-family: "Font Awesome 5 Free";
-                    font-weight: 600;
-                    font-size: 1.4rem;
-                    color: $color-light;
+                    //Unicode, font-size, color
+                    @include font-awesome('\f002', 1.4rem, $color-light);
+
                     @media screen and (max-width: 1160px) {
                         font-size: 1rem;
+                    }
+                }
+            }
+
+            button{
+                display: none;
+                //right: 80px;
+                @include button-delete(80px);
+
+                @media screen and (max-width: 1160px) {
+                    right: 65px;
+                }
+                
+                &::after {
+                    //Unicode, font-size, color
+                    @include font-awesome('\f00d', 1.5rem, $color-grey);
+
+                    @media screen and (max-width: 1160px) {
+                        font-size: 1.2rem;
                     }
                 }
             }

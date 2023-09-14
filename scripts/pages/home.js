@@ -1,18 +1,18 @@
 import Api from '../api/Api.js';
 import Recipe from '../models/Recipe.js';
 import RecipeCard from '../templates/RecipeCard.js';
-import Filter from '../templates/Filter.js';
-import { openCloseFilter } from '../utils/filter.js';
+import Dropdown from '../templates/Dropdown.js';
+import { openCloseDropdown } from '../utils/dropdown.js';
 
 const recipesApi = new Api('./data/recipes.json');
 const recipes = await recipesApi.get();
 
-const displayFilters = async () => {
-    const filter = new Filter({ recipes });
-    filter.createFilter();
+const displayDropdownFilters = async () => {
+    const templateDropdown = new Dropdown({ recipes });
+    templateDropdown.createFilter();
 };
 
-const displayRecipes = async () => {
+const displayRecipesCards = async () => {
     recipes
         .map(recipe => new Recipe(recipe))
         .forEach(recipe => {
@@ -21,6 +21,6 @@ const displayRecipes = async () => {
         })
 };
 
-displayFilters();
-displayRecipes();
-openCloseFilter();
+displayDropdownFilters();
+displayRecipesCards();
+openCloseDropdown();
