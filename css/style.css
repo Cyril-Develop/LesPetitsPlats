@@ -79,6 +79,19 @@ ul {
   max-height: 0;
   transition: max-height 0.1s ease-in-out;
 }
+.dropdown .dropdown_content::-webkit-scrollbar {
+  width: 10px;
+}
+.dropdown .dropdown_content::-webkit-scrollbar-track {
+  background-color: #fff;
+}
+.dropdown .dropdown_content::-webkit-scrollbar-thumb {
+  background-color: #7A7A7A;
+  border-radius: 10px;
+}
+.dropdown .dropdown_content::-webkit-scrollbar-thumb:hover {
+  background-color: #FFD15B;
+}
 .dropdown .dropdown_content div {
   position: relative;
   margin: 10px 15px;
@@ -162,6 +175,7 @@ ul {
 
 .card_section {
   display: grid;
+  justify-items: center;
   grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
   flex-wrap: wrap;
   gap: 50px;
@@ -186,6 +200,7 @@ ul {
 .card_section .card {
   position: relative;
   height: 600px;
+  max-width: 500px;
   border-radius: 10px;
   overflow: hidden;
   background-color: #fff;
@@ -223,6 +238,19 @@ ul {
   gap: 20px;
   padding: 20px;
   overflow-y: scroll;
+}
+.card_section .card_infos::-webkit-scrollbar {
+  width: 10px;
+}
+.card_section .card_infos::-webkit-scrollbar-track {
+  background-color: #fff;
+}
+.card_section .card_infos::-webkit-scrollbar-thumb {
+  background-color: #7A7A7A;
+  border-radius: 10px;
+}
+.card_section .card_infos::-webkit-scrollbar-thumb:hover {
+  background-color: #FFD15B;
 }
 @media screen and (max-width: 500px) {
   .card_section .card_infos {

@@ -30,5 +30,23 @@
     &:focus::after{
         color: $color-primary;
     }
+};
 
-}
+@mixin scrollbar{
+    &::-webkit-scrollbar {
+        width: 10px;
+    };
+
+    &::-webkit-scrollbar-track {
+        background-color: $color-light;
+    };
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $color-grey;
+        border-radius: 10px ;
+    };
+
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: $color-primary;
+    };
+};

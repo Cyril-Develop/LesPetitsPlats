@@ -69,28 +69,3 @@ function chercheDansChaine(chaine, champRecherche) {
     }
     return false;
 }
-
-
-//METHODES TABLEAU
-// function rechercheRecettes(champRecherche) {
-//     const resultats = [];
-
-//     recipes.forEach(recette => {
-//         const { appliance, ustensils, ingredients, name } = recette;
-
-//         if (
-//             appliance.toLowerCase().includes(champRecherche) ||
-//             ustensils.some(ustensil => ustensil.toLowerCase().includes(champRecherche)) ||
-//             ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(champRecherche)) ||
-//             name.toLowerCase().includes(champRecherche)
-//         ) {
-//             resultats.push(recette);
-//         }
-//     });
-
-//     if (!resultats.length) console.log("Aucune recette trouvée.");
-//     else {
-//         console.log("Recettes correspondantes :");
-//         console.log(resultats);
-//     }
-// };

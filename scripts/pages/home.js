@@ -3,6 +3,7 @@ import Recipe from '../models/Recipe.js';
 import RecipeCard from '../templates/RecipeCard.js';
 import Dropdown from '../templates/Dropdown.js';
 import { openCloseDropdown } from '../utils/dropdown.js';
+import { getInputValue } from '../utils/search.js';
 
 const recipesApi = new Api('./data/recipes.json');
 const recipes = await recipesApi.get();
@@ -12,7 +13,7 @@ const displayDropdownFilters = async () => {
     templateDropdown.createFilter();
 };
 
-const displayRecipesCards = async () => {
+export const displayRecipesCards = async () => {
     recipes
         .map(recipe => new Recipe(recipe))
         .forEach(recipe => {
@@ -24,3 +25,4 @@ const displayRecipesCards = async () => {
 displayDropdownFilters();
 displayRecipesCards();
 openCloseDropdown();
+getInputValue(recipes);
