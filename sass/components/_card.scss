@@ -19,10 +19,15 @@
         grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
     }
 
+    p{
+        font-size: clamp(1.2rem, 2vw, 1.5rem);
+        font-family: $texte-typo;
+    }
+
     .card {
         position: relative;
         height: 600px;
-        max-width: 500px;
+        max-width: 400px;
         border-radius: 10px;
         overflow: hidden;
         background-color: $color-light;

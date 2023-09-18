@@ -1,34 +1,31 @@
 export const openCloseDropdown = () => {
     const dropdownButtons = document.querySelectorAll('.dropdown_btn');
 
-    function toggleDropdown(button) {
-        const dropdownContent = button.nextElementSibling;
+    function toggleDropdown(btn) {
+        const dropdownContent = btn.nextElementSibling;
         dropdownContent.classList.toggle('active');
     };
 
     function closeOtherDropdowns(clickedButton) {
-        dropdownButtons.forEach(button => {
-            if (button !== clickedButton) {
-                button.nextElementSibling.classList.remove('active');
-            }
+        dropdownButtons.forEach(btn => {
+            if (btn !== clickedButton) btn.nextElementSibling.classList.remove('active');
         });
     };
 
-    function focusableElements(button) {
-        const dropdownContent = button.nextElementSibling;
+    function focusableElements(btn) {
+        const dropdownContent = btn.nextElementSibling;
         const focusableElements = dropdownContent.querySelectorAll('input, button, li, label');
 
         dropdownContent.classList.contains('active') ? 
         focusableElements.forEach(element => element.setAttribute('tabindex', '0')) : 
         focusableElements.forEach(element => element.setAttribute('tabindex', '-1'));
-
     };
 
-    dropdownButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            toggleDropdown(button);
-            closeOtherDropdowns(button);
-            focusableElements(button)
+    dropdownButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            toggleDropdown(btn);
+            closeOtherDropdowns(btn);
+            focusableElements(btn);
         });
     });
 };

@@ -2,8 +2,8 @@ import Api from '../api/Api.js';
 import Recipe from '../models/Recipe.js';
 import RecipeCard from '../templates/RecipeCard.js';
 import Dropdown from '../templates/Dropdown.js';
-import { openCloseDropdown } from '../utils/dropdown.js';
-import { getInputValue } from '../utils/search.js';
+import { openCloseDropdown } from '../utils/dropdownEvent.js';
+import { mainSearch } from '../utils/mainSearch.js';
 
 const recipesApi = new Api('./data/recipes.json');
 const recipes = await recipesApi.get();
@@ -25,4 +25,4 @@ export const displayRecipesCards = async () => {
 displayDropdownFilters();
 displayRecipesCards();
 openCloseDropdown();
-getInputValue(recipes);
+mainSearch(recipes);
