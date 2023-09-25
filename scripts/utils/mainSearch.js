@@ -1,27 +1,29 @@
 import RecipeCard from "../templates/RecipeCard.js";
-import Dropdown from "../templates/Dropdown.js";
 import { displayRecipesCards } from "../pages/home.js";
 import { normalizeString } from "./normalizeString.js";
 
-export const mainSearch = recipes => {
+export const mainSearch = (recipes, dropdowns) => {
     const searchInput = document.querySelector('#search-recipe');
     const btnDelete = document.querySelector('.header_cta div button');
+    const cardSection = document.querySelector('.card_section');
+    const numberOfRecipes = document.querySelector('.recipes_count');
 
     const updateContent = () => {
         const searchInputValue = searchInput.value.toLowerCase();
         if (searchInputValue.length >= 3) {
             btnDelete.style.display = 'block';
-            searchRecipe(recipes, searchInputValue);
+            searchRecipe(recipes, searchInputValue, cardSection, numberOfRecipes, dropdowns);
         } else {
             btnDelete.style.display = 'none';
-            resetContent();
-        };
+            resetContent(cardSection, numberOfRecipes);
+        }
     };
 
     const resetContent = () => {
         cardSection.innerHTML = '';
         numberOfRecipes.textContent = `${recipes.length} recettes`;
         displayRecipesCards();
+        dropdowns.forEach(dropdown => dropdown.resetItemList());
     };
 
     searchInput.addEventListener('input', updateContent);
@@ -29,14 +31,11 @@ export const mainSearch = recipes => {
     btnDelete.addEventListener('click', () => {
         searchInput.value = '';
         btnDelete.style.display = 'none';
-        resetContent();
+        resetContent(cardSection, numberOfRecipes);
     });
 };
 
-const cardSection = document.querySelector('.card_section');
-const numberOfRecipes = document.querySelector('.recipes_count');
-
-const searchRecipe = (recipes, inputValue) => {
+const searchRecipe = (recipes, inputValue, cardSection, numberOfRecipes, dropdowns) => {
     const normalizedInputValue = normalizeString(inputValue);
 
     const filteredRecipes = recipes.filter(recipe => {
@@ -52,9 +51,6 @@ const searchRecipe = (recipes, inputValue) => {
         );
     });
 
-    // méthode statique de la classe Dropdown
-    Dropdown.updateDropdowns(filteredRecipes);
-
     if (!filteredRecipes.length) {
         cardSection.innerHTML = "<p>Aucune recette n'a été trouvée.</p>";
         numberOfRecipes.textContent = ``;
@@ -67,4 +63,6 @@ const searchRecipe = (recipes, inputValue) => {
             templateCard.createCard();
         });
     };
+
+    dropdowns.forEach(dropdown => dropdown.updateItems(filteredRecipes, inputValue));
 };
