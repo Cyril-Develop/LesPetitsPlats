@@ -12,7 +12,7 @@ export const mainSearch = (recipes, dropdowns) => {
         const searchInputValue = searchInput.value.toLowerCase();
         if (searchInputValue.length >= 3) {
             btnDelete.style.display = 'block';
-            searchRecipe(recipes, searchInputValue, cardSection, numberOfRecipes, dropdowns);
+            filterRecipes(recipes, searchInputValue, cardSection, numberOfRecipes, dropdowns);
         } else {
             btnDelete.style.display = 'none';
             resetContent(cardSection, numberOfRecipes);
@@ -35,7 +35,7 @@ export const mainSearch = (recipes, dropdowns) => {
     });
 };
 
-const searchRecipe = (recipes, inputValue, cardSection, numberOfRecipes, dropdowns) => {
+const filterRecipes = (recipes, inputValue, cardSection, numberOfRecipes, dropdowns) => {
     const normalizedInputValue = normalizeString(inputValue);
 
     const filteredRecipes = recipes.filter(recipe => {
@@ -64,5 +64,21 @@ const searchRecipe = (recipes, inputValue, cardSection, numberOfRecipes, dropdow
         });
     };
 
-    dropdowns.forEach(dropdown => dropdown.updateItems(filteredRecipes, inputValue));
+    const filteredItems = extractFilteredItems(filteredRecipes);
+
+    dropdowns.forEach(dropdown => dropdown.updateItems(filteredItems, inputValue));
+};
+
+const extractFilteredItems = filteredRecipes => {
+    const filteredItems = [];
+
+    filteredRecipes.forEach(recipe => {
+        filteredItems.push(normalizeString(recipe.appliance));
+
+        recipe.ustensils.forEach(ustensil => filteredItems.push(normalizeString(ustensil)));
+
+        recipe.ingredients.forEach(ingredient => filteredItems.push(normalizeString(ingredient.ingredient)));
+    });
+
+    return filteredItems;
 };

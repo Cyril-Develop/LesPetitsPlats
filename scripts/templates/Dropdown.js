@@ -4,6 +4,7 @@ export default class Dropdown {
     constructor(name, items) {
         this.name = name;
         this.items = items;
+        this.filteredItems = [];
         this.itemList = null;
     }
 
@@ -33,77 +34,37 @@ export default class Dropdown {
         dropdownWrapper.innerHTML = dropdownContent;
 
         const inputElement = dropdownWrapper.querySelector(`#search-${this.name}`);
-        this.itemList = dropdownWrapper.querySelector('.dropdown_content_list');
+        this.itemList = dropdownWrapper.querySelectorAll('.dropdown_content_list li');
 
-        this.search(inputElement);
+        inputElement.addEventListener('input', () => this.search(inputElement.value.toLowerCase()));
 
         return dropdownWrapper;
     }
 
-    getItemsList() {
-        return this.itemList.querySelectorAll('li');
-    }
-
-    updateItems(filteredRecipes, inputValue) {
-        const filteredItems = []
-
-        filteredRecipes.forEach(recipe => {
-            filteredItems.push(normalizeString(recipe.appliance));
-
-            recipe.ustensils.forEach(ustensil => filteredItems.push(normalizeString(ustensil)));
-
-            recipe.ingredients.forEach(ingredient => filteredItems.push(normalizeString(ingredient.ingredient)));
-        });
-
-        const items = this.getItemsList();
-        
-        items.forEach(item => {
+    updateItems(filteredItems, inputValue) {
+        this.filteredItems = filteredItems;
+        this.itemList.forEach(item => {
             const itemText = normalizeString(item.textContent.toLowerCase());
-            if (!filteredItems.includes(itemText)) item.style.display = 'none';
-            else item.style.display = 'block';
+            filteredItems.includes(itemText) ? item.style.display = 'block' : item.style.display = 'none';
         });
 
-        if (!inputValue) this.resetItemList();
+        if (!inputValue) {
+            this.resetItemList();
+        }
     }
 
     resetItemList() {
-        const items = this.getItemsList();
-        items.forEach(item => item.style.display = 'block');
+        this.itemList.forEach(item => item.style.display = 'block');
     }
 
-    search(inputElement) {
-        inputElement.addEventListener('input', () => {
-            const inputValue = normalizeString(inputElement.value.toLowerCase());
-            const items = this.getItemsList();
-            const btnDelete = inputElement.nextElementSibling;
-
-            this.toggleDeleteButton(btnDelete, inputElement, items);
-            this.filterItems(inputValue, items);
+    search(inputValue) {
+        const itemsToSearch = !this.filteredItems.length ? this.items : this.filteredItems;
+    
+        const filteredItems = itemsToSearch.filter(item => {
+            const normalizedItem = normalizeString(item.toLowerCase());
+            return normalizedItem.includes(inputValue);
         });
-    }
-
-    toggleDeleteButton(btnDelete, inputElement, items) {
-        const inputValue = normalizeString(inputElement.value.toLowerCase());
-        if (inputValue) {
-            btnDelete.style.display = 'block';
-            btnDelete.addEventListener('click', () => {
-                inputElement.value = '';
-                btnDelete.style.display = 'none';
-                this.showAllItems(items);
-            });
-        } 
-        else btnDelete.style.display = 'none';  
-    }
-
-    filterItems(inputValue, items) {
-        items.forEach(item => {
-            const itemText = normalizeString(item.textContent.toLowerCase());
-            itemText.includes(inputValue) ? item.style.display = 'block' : item.style.display = 'none';
-        });
-    }
-
-    showAllItems(items) {
-        items.forEach(item => item.style.display = 'block');
-    }
-
+    
+        this.updateItems(filteredItems, inputValue)
+    } 
 }

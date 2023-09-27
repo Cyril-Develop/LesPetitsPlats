@@ -9,7 +9,7 @@ import { extractUniqueProperties } from '../utils/extractUniqueProperties.js';
 const recipesApi = new Api('./data/recipes.json');
 const recipes = await recipesApi.get();
 
-const dropdowns = [];
+export const dropdowns = [];
 
 const displayDropdownSection = async () => {
     const numberOfRecipes = document.querySelector('.recipes_count');
@@ -38,11 +38,11 @@ openCloseDropdown();
 mainSearch(recipes, dropdowns);
 
 
-const allTags = document.querySelectorAll('.dropdown_wrapper li');
-console.log(allTags);
+// const allTags = document.querySelectorAll('.dropdown_wrapper li');
+// console.log(allTags);
 
-allTags.forEach(tag => {
-    tag.addEventListener('click', () => {
-        console.log(tag.textContent);
-    });
-});
+// allTags.forEach(tag => {
+//     tag.addEventListener('click', () => {
+//         console.log(tag.textContent);
+//     });
+// });
