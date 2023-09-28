@@ -36,35 +36,50 @@ export default class Dropdown {
         const inputElement = dropdownWrapper.querySelector(`#search-${this.name}`);
         this.itemList = dropdownWrapper.querySelectorAll('.dropdown_content_list li');
 
-        inputElement.addEventListener('input', () => this.search(inputElement.value.toLowerCase()));
+        inputElement.addEventListener('input', () => this.search(normalizeString(inputElement.value)));
 
         return dropdownWrapper;
     }
 
-    updateItems(filteredItems, inputValue) {
+    updateItems(filteredItems, _inputValue, match) {
         this.filteredItems = filteredItems;
-        this.itemList.forEach(item => {
-            const itemText = normalizeString(item.textContent.toLowerCase());
-            filteredItems.includes(itemText) ? item.style.display = 'block' : item.style.display = 'none';
-        });
 
-        if (!inputValue) {
-            this.resetItemList();
+        // Avant de mettre à jour les éléments, masquez-les tous
+        this.itemList.forEach(item => item.style.display = 'none');
+            
+        // Si match n'est pas null, affichez les éléments correspondants
+        if (match) {
+            match.forEach(itemText => {
+                const itemElement = [...this.itemList].find(item => normalizeString(item.textContent) === normalizeString(itemText));
+                if (itemElement) {
+                    itemElement.style.display = 'block';
+                }
+            });
+        } else {
+            // Si match est null, afficher tous les éléments de filteredItems
+            this.filteredItems.forEach(itemText => {
+                const itemElement = [...this.itemList].find(item => normalizeString(item.textContent) === normalizeString(itemText));
+                if (itemElement) {
+                    itemElement.style.display = 'block';
+                }
+            });
         }
     }
 
     resetItemList() {
         this.itemList.forEach(item => item.style.display = 'block');
+        this.filteredItems = [];
     }
 
     search(inputValue) {
         const itemsToSearch = !this.filteredItems.length ? this.items : this.filteredItems;
-    
-        const filteredItems = itemsToSearch.filter(item => {
-            const normalizedItem = normalizeString(item.toLowerCase());
+
+        const match = itemsToSearch.filter(item => {
+            const normalizedItem = normalizeString(item);
             return normalizedItem.includes(inputValue);
         });
-    
-        this.updateItems(filteredItems, inputValue)
-    } 
+
+        this.updateItems(this.filteredItems, inputValue, match)
+    }
+
 }
