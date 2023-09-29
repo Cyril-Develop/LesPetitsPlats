@@ -36,7 +36,10 @@ export default class Dropdown {
         const inputElement = dropdownWrapper.querySelector(`#search-${this.name}`);
         this.itemList = dropdownWrapper.querySelectorAll('.dropdown_content_list li');
 
-        inputElement.addEventListener('input', () => this.search(normalizeString(inputElement.value)));
+        inputElement.addEventListener('input', () => {
+            this.search(normalizeString(inputElement.value));   
+            this.toggleDeleteBtn(inputElement);
+        });
 
         return dropdownWrapper;
     }
@@ -51,17 +54,15 @@ export default class Dropdown {
         if (match) {
             match.forEach(itemText => {
                 const itemElement = [...this.itemList].find(item => normalizeString(item.textContent) === normalizeString(itemText));
-                if (itemElement) {
+                if (itemElement) 
                     itemElement.style.display = 'block';
-                }
             });
         } else {
             // Si match est null, afficher tous les éléments de filteredItems
             this.filteredItems.forEach(itemText => {
                 const itemElement = [...this.itemList].find(item => normalizeString(item.textContent) === normalizeString(itemText));
-                if (itemElement) {
+                if (itemElement) 
                     itemElement.style.display = 'block';
-                }
             });
         }
     }
@@ -82,4 +83,18 @@ export default class Dropdown {
         this.updateItems(this.filteredItems, inputValue, match)
     }
 
+    toggleDeleteBtn(inputElement) {
+        const btnDelete = inputElement.nextElementSibling;
+        const inputValue = inputElement.value;
+        inputValue.length >= 3 ? btnDelete.style.display = 'block' : btnDelete.style.display = 'none';
+    
+        btnDelete.addEventListener('click', () => {
+            inputElement.value = '';
+            btnDelete.style.display = 'none';
+    
+            // Réinitialiser la liste des éléments affichés
+            const itemsToReset = !this.filteredItems.length ? this.items : this.filteredItems;
+            this.updateItems(itemsToReset, inputValue, null);
+        });
+    }
 }
