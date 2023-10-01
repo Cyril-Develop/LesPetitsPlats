@@ -112,8 +112,8 @@
 
             button{
                 display: none;
-                //right: 80px;
-                @include button-delete(80px);
+                //position, right, background-color;
+                @include button-delete(absolute, 80px, $color-light);
 
                 @media screen and (max-width: 1160px) {
                     right: 65px;

@@ -2,6 +2,7 @@ import Api from '../api/Api.js';
 import Recipe from '../models/Recipe.js';
 import RecipeCard from '../templates/RecipeCard.js';
 import Dropdown from '../templates/Dropdown.js';
+import Tag from '../templates/Tag.js';
 import { openCloseDropdown } from '../utils/dropdownEvent.js';
 import { mainSearch } from '../utils/mainSearch.js';
 import { extractUniqueProperties } from '../utils/extractUniqueProperties.js';
@@ -38,11 +39,6 @@ openCloseDropdown();
 mainSearch(recipes, dropdowns);
 
 
-// const allTags = document.querySelectorAll('.dropdown_wrapper li');
-// console.log(allTags);
 
-// allTags.forEach(tag => {
-//     tag.addEventListener('click', () => {
-//         console.log(tag.textContent);
-//     });
-// });
+const tag = new Tag('test');
+tag.createTag();

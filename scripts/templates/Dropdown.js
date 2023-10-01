@@ -10,7 +10,6 @@ export default class Dropdown {
 
     createDropdown() {
         const dropdownContent = `
-            <div class="dropdown_wrapper">
                 <div class="dropdown"> 
                     <button class="dropdown_btn" type="button">
                         <span>${this.name}</span>
@@ -28,9 +27,9 @@ export default class Dropdown {
                         </ul>
                     </div>
                 </div>                          
-            </div>
         `;
         const dropdownWrapper = document.createElement('div');
+        dropdownWrapper.setAttribute('class', 'dropdown_wrapper');
         dropdownWrapper.innerHTML = dropdownContent;
 
         const inputElement = dropdownWrapper.querySelector(`#search-${this.name}`);
@@ -67,11 +66,6 @@ export default class Dropdown {
         }
     }
 
-    resetItemList() {
-        this.itemList.forEach(item => item.style.display = 'block');
-        this.filteredItems = [];
-    }
-
     search(inputValue) {
         const itemsToSearch = !this.filteredItems.length ? this.items : this.filteredItems;
 
@@ -81,6 +75,11 @@ export default class Dropdown {
         });
 
         this.updateItems(this.filteredItems, inputValue, match)
+    }
+
+    resetItemList() {
+        this.itemList.forEach(item => item.style.display = 'block');
+        this.filteredItems = [];
     }
 
     toggleDeleteBtn(inputElement) {

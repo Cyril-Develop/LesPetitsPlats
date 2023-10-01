@@ -19,16 +19,22 @@
     color: $color;
 };
 
-@mixin button-delete($right){
-    position: absolute;
+@mixin button-delete($position, $right, $color-bg){
+    position: $position;
     right: $right;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: $color-light;
+    @if($position == absolute){
+        top: 50%;
+        transform: translateY(-50%);
+    };
+    background-color: $color-bg;
 
     &:hover::after,
     &:focus::after{
-        color: $color-primary;
+        @if $color-bg == $color-light {
+            color: $color-primary;
+        } @else {
+            color: $color-light;
+        };
     }
 };
 

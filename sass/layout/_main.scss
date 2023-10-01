@@ -33,13 +33,39 @@ main {
             font-weight: 400;
             font-family: $title-typo;
 
+            @media screen and (max-width: 1160px) {
+                line-height: 50px;
+            }
+
             @media screen and (max-width: 656px) {
                 text-align: center;
                 flex-grow: 0;
                 width: 100%;
-                line-height: 50px;
+                
             }
 
+        }
+    }
+    .dropdown_wrapper {
+        z-index: 100;
+        position: relative;
+        width: 180px;
+        height: 60px;
+    
+        @media screen and (max-width: 1160px) {
+            width: 150px;
+            height: 50px;
+        }
+    
+        @media screen and (max-width: 530px) {
+            width: 280px;
+            margin: 5px;
+        }
+    }
+    .tag_section{
+        margin-top: 40px;
+        @media screen and (max-width: 1160px) {
+            margin-top: 20px;
         }
     }
 }
