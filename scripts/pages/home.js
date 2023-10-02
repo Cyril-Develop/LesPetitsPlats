@@ -1,8 +1,7 @@
 import Api from '../api/Api.js';
 import Recipe from '../models/Recipe.js';
 import RecipeCard from '../templates/RecipeCard.js';
-import Dropdown from '../templates/Dropdown.js';
-import Tag from '../templates/Tag.js';
+import Dropdown from '../templates/Dropdown.js'
 import { openCloseDropdown } from '../utils/dropdownEvent.js';
 import { mainSearch } from '../utils/mainSearch.js';
 import { extractUniqueProperties } from '../utils/extractUniqueProperties.js';
@@ -16,9 +15,9 @@ const displayDropdownSection = async () => {
     const numberOfRecipes = document.querySelector('.recipes_count');
     numberOfRecipes.textContent = `${recipes.length} recettes`;
 
-    dropdowns.push(new Dropdown('Ingrédients', extractUniqueProperties(recipes).ingredients));
-    dropdowns.push(new Dropdown('Appareils', extractUniqueProperties(recipes).appliances));
-    dropdowns.push(new Dropdown('Ustensiles', extractUniqueProperties(recipes).ustensils));
+    dropdowns.push(new Dropdown('Ingrédients', extractUniqueProperties(recipes).ingredients, recipes));
+    dropdowns.push(new Dropdown('Appareils', extractUniqueProperties(recipes).appliances, recipes));
+    dropdowns.push(new Dropdown('Ustensiles', extractUniqueProperties(recipes).ustensils, recipes));
 
     const filterSection = document.querySelector('.filter_section');
     dropdowns.forEach(dropdown => filterSection.insertBefore(dropdown.createDropdown(), numberOfRecipes));
@@ -36,9 +35,4 @@ export const displayRecipesCards = async () => {
 displayDropdownSection();
 displayRecipesCards();
 openCloseDropdown();
-mainSearch(recipes, dropdowns);
-
-
-
-const tag = new Tag('test');
-tag.createTag();
+mainSearch(recipes);

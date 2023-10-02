@@ -1,6 +1,7 @@
 export default class Tag {
     constructor(name) {
         this.name = name;
+        this.tagList = [];
     }
     createTag() {
         const tagSection = document.querySelector('.tag_section');
