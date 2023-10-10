@@ -1,22 +1,28 @@
 import { normalizeString } from "./normalizeString.js";
 import { updateWithFilteredRecipes } from "./updateWithFilteredRecipes.js";
-import { dropdowns } from "../pages/home.js";
+import { updateCurrentRecipes } from "../pages/home.js";
+import { mainSearch } from "./mainSearch.js";
 
-export const filterRecipesByTag = (recipes, tags, cardSection, numberOfRecipes) => {
-    console.log(recipes);
+//Vérifier que tous les tags sont présents dans la recette
+export const filterRecipesByTags = (recipes, tags) => {
+
     const filteredRecipes = recipes.filter(recipe => {
         const { appliance, ustensils, ingredients } = recipe;
-        const normalizedAppliance = normalizeString(appliance);
 
         const normalizedTags = tags.map(tag => normalizeString(tag));
 
+        // Vérifie que tous les tags sont présents dans la recette
         return (
-            normalizedAppliance.includes(normalizedTags) ||
-            ustensils.some(ustensil => normalizeString(ustensil).includes(normalizedTags)) ||
-            ingredients.some(ingredient => normalizeString(ingredient.ingredient).includes(normalizedTags))
+            normalizedTags.every(tag => 
+                normalizeString(appliance).includes(tag) ||
+                ustensils.some(ustensil => normalizeString(ustensil).includes(tag)) ||
+                ingredients.some(ingredient => normalizeString(ingredient.ingredient).includes(tag))
+            )
         );
     });
+    mainSearch();
 
-    dropdowns.forEach(dropdown => dropdown.updateRecipes(filteredRecipes));
-    updateWithFilteredRecipes(filteredRecipes, cardSection, numberOfRecipes);
+    updateCurrentRecipes(filteredRecipes);
+
+    updateWithFilteredRecipes(filteredRecipes);
 };

@@ -1,24 +1,23 @@
-export const  extractUniqueProperties = recipes => {
-    const ingredients = new Set();
-    const appliances = new Set();
-    const ustensils = new Set();
+export const extractUniqueProperties = recipes => {
+    const uniqueProperties = {
+        ingredients: new Set(),
+        appliances: new Set(),
+        ustensils: new Set()
+    };
+
+    const addPropertyToSet = (propertySet, value) => propertySet.add(value.toLowerCase()) ;
 
     recipes.forEach(recipe => {
-        recipe.ingredients.forEach(ingredient => ingredients.add(ingredient.ingredient.toLowerCase()));
-            
-        appliances.add(recipe.appliance.toLowerCase());
-
-        recipe.ustensils.forEach(ustensil => ustensils.add(ustensil.toLowerCase()));
-            
+        recipe.ingredients.forEach(ingredient => addPropertyToSet(uniqueProperties.ingredients, ingredient.ingredient));
+        addPropertyToSet(uniqueProperties.appliances, recipe.appliance);
+        recipe.ustensils.forEach(ustensil => addPropertyToSet(uniqueProperties.ustensils, ustensil));
     });
 
-    const ingredientsArray = Array.from(ingredients);
-    const appliancesArray = Array.from(appliances);
-    const ustensilsArray = Array.from(ustensils);
+    // Ensemble set en tableau et trie par ordre alphabétique
+    const propertiesArray = {};
+    for (const property in uniqueProperties) {
+        propertiesArray[property] = Array.from(uniqueProperties[property]).sort();
+    }
 
-    return {
-        ingredients: ingredientsArray,
-        appliances: appliancesArray,
-        ustensils: ustensilsArray
-    };
+    return propertiesArray;
 };

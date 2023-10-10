@@ -1,14 +1,15 @@
 import { normalizeString } from '../utils/normalizeString.js';
 import Tag from './Tag.js';
-import { filterRecipesByTag } from '../utils/filterRecipesByTag.js';
+import { filterRecipesByTags } from '../utils/filterRecipesByTag.js';
+import { selectedTags } from '../pages/home.js';
+import { currentRecipes } from '../pages/home.js';
+
 export default class Dropdown {
-    constructor(name, items, recipes) {
+    constructor(name, items) {
         this.name = name;
         this.items = items;
-        this.recipes = recipes;
         this.filteredItems = [];
         this.itemList = null;
-        this.tagList = [];
     }
 
     createDropdown() {
@@ -38,38 +39,28 @@ export default class Dropdown {
         const inputElement = dropdownWrapper.querySelector(`#search-${this.name}`);
         this.itemList = dropdownWrapper.querySelectorAll('.dropdown_content_list li');
 
-        const cardSection = document.querySelector('.card_section');
-        const numberOfRecipes = document.querySelector('.recipes_count');
-
         inputElement.addEventListener('input', () => {
-            this.search(normalizeString(inputElement.value));   
+            this.search(normalizeString(inputElement.value));
             this.toggleDeleteBtn(inputElement);
         });
 
-        this.addTag(cardSection, numberOfRecipes);
+        this.tagHandler();
 
         return dropdownWrapper;
     }
 
     updateItems(filteredItems, _inputValue, match) {
         this.filteredItems = filteredItems;
-        
 
         this.itemList.forEach(item => item.style.display = 'none');
-            
-        if (match) {
-            match.forEach(itemText => {
-                const itemElement = [...this.itemList].find(item => normalizeString(item.textContent) === normalizeString(itemText));
-                if (itemElement) 
-                    itemElement.style.display = 'block';
-            });
-        } else {
-            this.filteredItems.forEach(itemText => {
-                const itemElement = [...this.itemList].find(item => normalizeString(item.textContent) === normalizeString(itemText));
-                if (itemElement) 
-                    itemElement.style.display = 'block';
-            });
-        }
+
+        let items = match ? match : this.filteredItems;
+
+        items.forEach(itemText => {
+            const itemElement = [...this.itemList].find(item => normalizeString(item.textContent) === normalizeString(itemText));
+            if (itemElement)
+                itemElement.style.display = 'block';
+        });
     }
 
     search(inputValue) {
@@ -91,31 +82,46 @@ export default class Dropdown {
     toggleDeleteBtn(inputElement) {
         const btnDelete = inputElement.nextElementSibling;
         const inputValue = inputElement.value;
-        inputValue.length >= 3 ? btnDelete.style.display = 'block' : btnDelete.style.display = 'none';
-    
+        inputValue.length > 0 ? btnDelete.style.display = 'block' : btnDelete.style.display = 'none';
+
         btnDelete.addEventListener('click', () => {
             inputElement.value = '';
             btnDelete.style.display = 'none';
-    
+
             const itemsToReset = !this.filteredItems.length ? this.items : this.filteredItems;
             this.updateItems(itemsToReset, inputValue, null);
         });
     }
 
-    updateRecipes(newRecipes) {
-        this.recipes = newRecipes;
-        console.log(this.recipes);
-    }
-
-    addTag(cardSection, numberOfRecipes){
+    tagHandler() {
         this.itemList.forEach(item => {
-            item.addEventListener('click', () => {
-                this.tagList.push(item.textContent);
-                const tag = new Tag(item.textContent);
-                tag.createTag();
-                console.log(this.recipes);
-                filterRecipesByTag(this.recipes, this.tagList, cardSection, numberOfRecipes);
-            });
+            item.addEventListener('click', () => { this.addTag(item.textContent) });
+            item.addEventListener('keydown', e => { if (e.key === 'Enter') this.addTag(item.textContent) });
         });
     }
+
+    addTag(tagText) {
+        const tag = new Tag(tagText);
+        tag.createTag();
+        selectedTags.push(tagText);
+        filterRecipesByTags(currentRecipes, selectedTags);
+    }
 }
+
+
+
+
+
+
+
+
+
+// Supprimer un tag lorsque nécessaire
+// removeTag(tagText) {
+//     // Retirez le tag de la liste des tags sélectionnés
+//     const index = selectedTags.indexOf(tagText);
+//     if (index !== -1) {
+//         selectedTags.splice(index, 1);
+//         // Mettez à jour la recherche principale avec les tags restants
+//     }
+// }

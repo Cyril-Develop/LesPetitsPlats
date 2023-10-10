@@ -1,8 +1,11 @@
-import RecipeCard from "../templates/RecipeCard.js";
+import RecipeCard from "../components/RecipeCard.js";
 import { extractFilteredItems } from "./extractFilteredItems.js";
 import { dropdowns } from "../pages/home.js";
 
-export const updateWithFilteredRecipes = (filteredRecipes, cardSection, numberOfRecipes) => {
+export const updateWithFilteredRecipes = filteredRecipes => {
+
+    const cardSection = document.querySelector('.card_section');
+    const numberOfRecipes = document.querySelector('.recipes_count');
     
     if (!filteredRecipes.length) {
         cardSection.innerHTML = "<p>Aucune recette n'a été trouvée.</p>";
