@@ -44,7 +44,7 @@ export default class Dropdown {
             this.toggleDeleteBtn(inputElement);
         });
 
-        this.tagHandler();
+        this.tagHandler(inputElement);
 
         return dropdownWrapper;
     }
@@ -95,7 +95,7 @@ export default class Dropdown {
 
     tagHandler() {
         this.itemList.forEach(item => {
-            item.addEventListener('click', () => { this.addTag(item.textContent) });
+            item.addEventListener('click', () =>  this.addTag(item.textContent));
             item.addEventListener('keydown', e => { if (e.key === 'Enter') this.addTag(item.textContent) });
         });
     }
@@ -107,21 +107,3 @@ export default class Dropdown {
         filterRecipesByTags(currentRecipes, selectedTags);
     }
 }
-
-
-
-
-
-
-
-
-
-// Supprimer un tag lorsque nécessaire
-// removeTag(tagText) {
-//     // Retirez le tag de la liste des tags sélectionnés
-//     const index = selectedTags.indexOf(tagText);
-//     if (index !== -1) {
-//         selectedTags.splice(index, 1);
-//         // Mettez à jour la recherche principale avec les tags restants
-//     }
-// }

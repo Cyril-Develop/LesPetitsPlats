@@ -12,11 +12,14 @@ export const recipes = await recipesApi.get();
 // Copie du tableau de recettes pour pouvoir filtrer les recettes en cours
 export const currentRecipes = [...recipes];
 
+// Fonction pour mettre à jour le tableau de recettes en cours
+export const updateCurrentRecipes = filteredRecipes => { currentRecipes.splice(0, currentRecipes.length, ...filteredRecipes) };
+
 export const selectedTags = [];
 
-export const updateCurrentRecipes = filteredRecipes => { currentRecipes.splice(0, currentRecipes.length, ...filteredRecipes) };
-    
 export const dropdowns = [];
+
+export const searchInput = document.querySelector('#search-recipe');
 
 const displayDropdownSection = async () => {
     const numberOfRecipes = document.querySelector('.recipes_count');
@@ -42,4 +45,4 @@ export const displayRecipesCards = async () => {
 displayDropdownSection();
 displayRecipesCards();
 openCloseDropdown();
-mainSearch();
+mainSearch(currentRecipes);

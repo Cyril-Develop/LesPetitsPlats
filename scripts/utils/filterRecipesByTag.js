@@ -1,7 +1,8 @@
 import { normalizeString } from "./normalizeString.js";
 import { updateWithFilteredRecipes } from "./updateWithFilteredRecipes.js";
 import { updateCurrentRecipes } from "../pages/home.js";
-import { mainSearch } from "./mainSearch.js";
+
+export let recipesFilteredByTag = [];
 
 //Vérifier que tous les tags sont présents dans la recette
 export const filterRecipesByTags = (recipes, tags) => {
@@ -20,8 +21,9 @@ export const filterRecipesByTags = (recipes, tags) => {
             )
         );
     });
-    mainSearch();
 
+    recipesFilteredByTag = filteredRecipes;
+    
     updateCurrentRecipes(filteredRecipes);
 
     updateWithFilteredRecipes(filteredRecipes);
