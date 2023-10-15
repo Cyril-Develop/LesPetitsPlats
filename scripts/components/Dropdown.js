@@ -3,6 +3,7 @@ import Tag from './Tag.js';
 import { filterRecipesByTags } from '../utils/filterRecipesByTag.js';
 import { selectedTags } from '../pages/home.js';
 import { currentRecipes } from '../pages/home.js';
+import { allRecipes } from '../pages/home.js';
 
 export default class Dropdown {
     constructor(name, items) {
@@ -93,10 +94,16 @@ export default class Dropdown {
         });
     }
 
-    tagHandler() {
+    tagHandler(inputElement) {
         this.itemList.forEach(item => {
-            item.addEventListener('click', () =>  this.addTag(item.textContent));
-            item.addEventListener('keydown', e => { if (e.key === 'Enter') this.addTag(item.textContent) });
+            item.addEventListener('click', () => {
+                this.addTag(item.textContent)
+                inputElement.value = '';
+            }); 
+            item.addEventListener('keydown', e => { 
+                if (e.key === 'Enter') this.addTag(item.textContent) 
+                inputElement.value = '';
+            });
         });
     }
 

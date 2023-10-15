@@ -1,6 +1,6 @@
 import { selectedTags } from "../pages/home.js";
-import { recipes } from "../pages/home.js";
-import { filterRecipesByTags } from "../utils/filterRecipesByTag.js";
+import { allRecipes } from "../pages/home.js";
+import { filterRecipes } from "../utils/filterRecipes.js";
 
 export default class Tag {
     constructor(name) {
@@ -23,11 +23,12 @@ export default class Tag {
         return tag;
     }
     removeTag(){
+        const inputValue = document.querySelector('#search-recipe').value;
         const tag = this.closest('.tag');
         // Enlever les espaces autour du texte
         const tagName = tag.textContent.trim(); 
         selectedTags.splice(selectedTags.indexOf(tagName), 1);
-        filterRecipesByTags(recipes, selectedTags);
+        filterRecipes(allRecipes, selectedTags, inputValue);
         tag.remove();
     }
 }

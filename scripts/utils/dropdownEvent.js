@@ -21,7 +21,7 @@ export const openCloseDropdown = () => {
 
     function focusableElements(btn) {
         const dropdownContent = btn.nextElementSibling;
-        const focusableElements = dropdownContent.querySelectorAll('input, button, li, label');
+        const focusableElements = dropdownContent.querySelectorAll('input, button, li');
 
         dropdownContent.classList.contains('active') ? 
         focusableElements.forEach(element => element.setAttribute('tabindex', '0')) : 
