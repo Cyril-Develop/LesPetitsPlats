@@ -9,6 +9,7 @@ import { recipesFilteredByTag } from "./filterRecipesByTag.js";
 export const mainSearch = () => {
     const searchInput = document.querySelector('#search-recipe');
     const btnDelete = document.querySelector('.header_cta div button');
+    const cardSection = document.querySelector('.card_section');
     const numberOfRecipes = document.querySelector('.recipes_count');
 
     const updateContent = () => {
@@ -25,6 +26,7 @@ export const mainSearch = () => {
     };
 
     const resetContent = () => {
+        cardSection.innerHTML = '';
         numberOfRecipes.textContent = `${allRecipes.length} recettes`;
         displayRecipesCards();
         dropdowns.forEach(dropdown => dropdown.resetItemList());

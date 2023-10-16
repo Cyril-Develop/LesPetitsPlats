@@ -17,8 +17,7 @@ export const filterRecipes = (recipes, tags, inputValue) => {
             ingredients.some(ingredient => normalizeString(ingredient.ingredient).includes(tag))
         );
 
-        // Vérifie que la recette contient la valeur de l'input
-        // Vérifie que la recette contient la valeur de l'input (uniquement si l'input n'est pas vide)
+        // Vérifie que la recherche est présente dans la recette (uniquement si le champs de recherche n'est pas vide)
         const searchMatch = !normalizedInputValue || (
             normalizeString(appliance).includes(normalizedInputValue) ||
             ustensils.some(ustensil => normalizeString(ustensil).includes(normalizedInputValue)) ||
