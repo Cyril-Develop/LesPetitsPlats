@@ -5,16 +5,39 @@ import { updateWithFilteredRecipes } from "./updateWithFilteredRecipes.js";
 export const filterRecipesBySearch = (recipes, inputValue) => {
     const normalizedInputValue = normalizeString(inputValue);
 
-    const filteredRecipes = recipes.filter(recipe => {
+    const filteredRecipes = [];
+
+    for (let i = 0; i < recipes.length; i++) {
+        const recipe = recipes[i];
         const { appliance, ustensils, ingredients, name } = recipe;
 
-        return (
-            normalizeString(appliance).includes(normalizedInputValue) ||
-            ustensils.some(ustensil => normalizeString(ustensil).includes(normalizedInputValue)) ||
-            ingredients.some(ingredient => normalizeString(ingredient.ingredient).includes(normalizedInputValue)) ||
-            normalizeString(name).includes(normalizedInputValue)
-        );
-    });
+        if (normalizeString(appliance).indexOf(normalizedInputValue) !== -1) {
+            filteredRecipes.push(recipe);
+        } else {
+            let found = false;
+            for (let j = 0; j < ustensils.length; j++) {
+                if (normalizeString(ustensils[j]).indexOf(normalizedInputValue) !== -1) {
+                    filteredRecipes.push(recipe);
+                    found = true;
+                    break;
+                }
+            }
+            if (found) continue;
+
+            for (let k = 0; k < ingredients.length; k++) {
+                if (normalizeString(ingredients[k].ingredient).indexOf(normalizedInputValue) !== -1) {
+                    filteredRecipes.push(recipe);
+                    found = true;
+                    break;
+                }
+            }
+            if (found) continue;
+
+            if (normalizeString(name).indexOf(normalizedInputValue) !== -1) {
+                filteredRecipes.push(recipe);
+            }
+        };
+    };
 
     updateCurrentRecipes(filteredRecipes);
 
