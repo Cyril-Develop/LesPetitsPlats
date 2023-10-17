@@ -111,6 +111,7 @@ export default class Dropdown {
         const tag = new Tag(tagText);
         tag.createTag();
         selectedTags.push(tagText);
+        console.log(currentRecipes);
         filterRecipesByTags(currentRecipes, selectedTags);
     }
 }

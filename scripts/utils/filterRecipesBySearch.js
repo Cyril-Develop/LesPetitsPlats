@@ -6,11 +6,10 @@ export const filterRecipesBySearch = (recipes, inputValue) => {
     const normalizedInputValue = normalizeString(inputValue);
 
     const filteredRecipes = recipes.filter(recipe => {
-        const { appliance, ustensils, ingredients, name } = recipe;
+        const { description, ingredients, name } = recipe;
 
         return (
-            normalizeString(appliance).includes(normalizedInputValue) ||
-            ustensils.some(ustensil => normalizeString(ustensil).includes(normalizedInputValue)) ||
+            normalizeString(description).includes(normalizedInputValue) ||
             ingredients.some(ingredient => normalizeString(ingredient.ingredient).includes(normalizedInputValue)) ||
             normalizeString(name).includes(normalizedInputValue)
         );
