@@ -5,6 +5,7 @@ import { selectedTags } from "../pages/home.js";
 import { allRecipes } from "../pages/home.js";
 import { filterRecipesByTags } from "./filterRecipesByTag.js";
 import { recipesFilteredByTag } from "./filterRecipesByTag.js";
+import { updateCurrentRecipes } from "../pages/home.js";
 
 export const mainSearch = () => {
     const searchInput = document.querySelector('#search-recipe');
@@ -16,19 +17,23 @@ export const mainSearch = () => {
         const searchInputValue = searchInput.value.toLowerCase();
         btnDelete.style.display = searchInputValue.length > 0 ? 'block' : 'none';
 
-        selectedTags.length > 0 ? filterRecipesBySearch(recipesFilteredByTag, searchInputValue) : filterRecipesBySearch(allRecipes, searchInputValue);
+        if(searchInputValue.length >= 3) {
+            const recipesToFilter = selectedTags.length > 0 ? recipesFilteredByTag : allRecipes;
+            filterRecipesBySearch(recipesToFilter, searchInputValue);
+        };
 
         //si le champs de recherche est vide et qu'il y a des tags sélectionnés, afficher les recettes correspondantes aux tags sélectionnés
-        if (!searchInput.value && selectedTags.length > 0) filterRecipesByTags(allRecipes, selectedTags)
+        if (!searchInput.value && selectedTags.length > 0) filterRecipesByTags(allRecipes, selectedTags);
 
         //sinon, réinitialiser le contenu
         else if (!searchInput.value && selectedTags.length === 0) resetContent();
     };
-
+    
     const resetContent = () => {
         cardSection.innerHTML = '';
         numberOfRecipes.textContent = `${allRecipes.length} recettes`;
         displayRecipesCards();
+        updateCurrentRecipes(allRecipes);
         dropdowns.forEach(dropdown => dropdown.resetItemList());
     };
 
@@ -37,6 +42,8 @@ export const mainSearch = () => {
     btnDelete.addEventListener('click', () => {
         searchInput.value = '';
         btnDelete.style.display = 'none';
-        selectedTags.length > 0 ? filterRecipesByTags(allRecipes, selectedTags) : resetContent();
+        
+        if(selectedTags.length > 0) filterRecipesByTags(allRecipes, selectedTags);
+        else if(selectedTags.length === 0) resetContent();
     });
 };

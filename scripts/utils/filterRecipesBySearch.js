@@ -9,23 +9,14 @@ export const filterRecipesBySearch = (recipes, inputValue) => {
 
     for (let i = 0; i < recipes.length; i++) {
         const recipe = recipes[i];
-        const { appliance, ustensils, ingredients, name } = recipe;
+        const { description, ingredients, name } = recipe;
 
-        if (normalizeString(appliance).indexOf(normalizedInputValue) !== -1) {
+        if (normalizeString(description).indexOf(normalizedInputValue) !== -1) {
             filteredRecipes.push(recipe);
         } else {
             let found = false;
-            for (let j = 0; j < ustensils.length; j++) {
-                if (normalizeString(ustensils[j]).indexOf(normalizedInputValue) !== -1) {
-                    filteredRecipes.push(recipe);
-                    found = true;
-                    break;
-                }
-            }
-            if (found) continue;
-
-            for (let k = 0; k < ingredients.length; k++) {
-                if (normalizeString(ingredients[k].ingredient).indexOf(normalizedInputValue) !== -1) {
+            for (let j = 0; j < ingredients.length; j++) {
+                if (normalizeString(ingredients[j].ingredient).indexOf(normalizedInputValue) !== -1) {
                     filteredRecipes.push(recipe);
                     found = true;
                     break;
