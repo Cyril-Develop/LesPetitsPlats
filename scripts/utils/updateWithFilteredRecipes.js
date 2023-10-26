@@ -1,6 +1,7 @@
 import RecipeCard from "../components/RecipeCard.js";
 import { extractFilteredItems } from "./extractFilteredItems.js";
 import { dropdowns } from "../pages/home.js";
+import Recipe from "../models/Recipe.js";
 
 export const updateWithFilteredRecipes = filteredRecipes => {
 
@@ -14,10 +15,12 @@ export const updateWithFilteredRecipes = filteredRecipes => {
         cardSection.innerHTML = "";
         numberOfRecipes.textContent = `${filteredRecipes.length} ${filteredRecipes.length === 1 ? 'recette' : 'recettes'}`;
 
-        filteredRecipes.forEach(recipe => {
-            const templateCard = new RecipeCard(recipe);
-            templateCard.createCard();
-        });
+        filteredRecipes
+            .map(recipe => new Recipe(recipe))
+            .forEach(recipe => {
+                const templateCard = new RecipeCard(recipe);
+                templateCard.createCard();
+            });
     };
 
     const filteredItems = extractFilteredItems(filteredRecipes);
