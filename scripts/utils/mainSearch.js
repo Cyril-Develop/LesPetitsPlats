@@ -1,4 +1,4 @@
-import { filterRecipesBySearch } from "./filterRecipesBySearch.js";
+
 import { displayRecipesCards } from "../pages/home.js";
 import { dropdowns } from "../pages/home.js";
 import { selectedTags } from "../pages/home.js";
@@ -6,6 +6,9 @@ import { allRecipes } from "../pages/home.js";
 import { filterRecipesByTags } from "./filterRecipesByTag.js";
 import { recipesFilteredByTag } from "./filterRecipesByTag.js";
 import { updateCurrentRecipes } from "../pages/home.js";
+import { binarySearch } from "./binarySearch.js";
+import { organizeRecipesByKeywords } from "../pages/home.js";
+import { filterRecipesBySearch } from "./filterRecipesBySearch.js";
 
 export const mainSearch = () => {
     const searchInput = document.querySelector('#search-recipe');
@@ -17,9 +20,9 @@ export const mainSearch = () => {
         const searchInputValue = searchInput.value.toLowerCase();
         btnDelete.style.display = searchInputValue.length > 0 ? 'block' : 'none';
 
-        if(searchInputValue.length >= 3) {
-            const recipesToFilter = selectedTags.length > 0 ? recipesFilteredByTag : allRecipes;
-            filterRecipesBySearch(recipesToFilter, searchInputValue);
+        if(searchInputValue.length > 2) {
+            if(selectedTags.length > 0) filterRecipesByTags(recipesFilteredByTag, selectedTags);
+            else if(selectedTags.length === 0) binarySearch(organizeRecipesByKeywords, searchInputValue);
         };
 
         //si le champs de recherche est vide et qu'il y a des tags sélectionnés, afficher les recettes correspondantes aux tags sélectionnés

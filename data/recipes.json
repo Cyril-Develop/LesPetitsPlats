@@ -1153,7 +1153,7 @@
             }
         ],
         "time": 20,
-        "description": "Beurrer les tranches de pain, ajouter entre 2 tranches de pain de mie 1 tranche d’emmental, une de blanc de dinde, et une autre d'emmental. Dans un récipient, mélanger le gruyère rappé avec le lait et la noix de muscade. Mettre sur les croque monsieur. Placer au four durant 10 minutes.",
+        "description": "Beurrer les tranches de pain, ajouter entre 2 tranches de pain de mie 1 tranche d'emmental, une de blanc de dinde, et une autre d'emmental. Dans un récipient, mélanger le gruyère rappé avec le lait et la noix de muscade. Mettre sur les croque monsieur. Placer au four durant 10 minutes.",
         "appliance": "Four",
         "ustensils": ["râpe à fromage", "cuillère à Soupe", "couteau"]
     },
@@ -1699,7 +1699,7 @@
             }
         ],
         "time": 40,
-        "description": "Étaler la pate a pizza. Écraser les tomates pelées, les étaler sur la pâte, ajouter les lardons et les champignons. Ajouter le gruyère eet passer au four à 220° durant 20 minutes",
+        "description": "Étaler la pate a pizza. Écraser les tomates pelées, les étaler sur la pâte, ajouter les lardons et les champignons. Ajouter le gruyère et passer au four à 220° durant 20 minutes",
         "appliance": "Four",
         "ustensils": ["rouleau à patisserie", "râpe à fromage", "couteau"]
     },

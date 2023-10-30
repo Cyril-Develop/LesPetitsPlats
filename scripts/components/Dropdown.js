@@ -3,7 +3,6 @@ import Tag from './Tag.js';
 import { filterRecipesByTags } from '../utils/filterRecipesByTag.js';
 import { selectedTags } from '../pages/home.js';
 import { currentRecipes } from '../pages/home.js';
-import { allRecipes } from '../pages/home.js';
 
 export default class Dropdown {
     constructor(name, items) {
@@ -108,10 +107,11 @@ export default class Dropdown {
     }
 
     addTag(tagText) {
-        const tag = new Tag(tagText);
-        tag.createTag();
-        selectedTags.push(tagText);
-        console.log(currentRecipes);
+        if(!selectedTags.includes(tagText)) {
+            const tag = new Tag(tagText);
+            tag.createTag();
+            selectedTags.push(tagText);
+        }  
         filterRecipesByTags(currentRecipes, selectedTags);
     }
 }
