@@ -17,7 +17,7 @@ export const mainSearch = () => {
         const searchInputValue = searchInput.value.toLowerCase();
         btnDelete.style.display = searchInputValue.length > 0 ? 'block' : 'none';
 
-        if(searchInputValue.length >= 3) {
+        if(searchInputValue.length > 2) {
             const recipesToFilter = selectedTags.length > 0 ? recipesFilteredByTag : allRecipes;
             filterRecipesBySearch(recipesToFilter, searchInputValue);
         };
