@@ -7,8 +7,6 @@ export let recipesFilteredByTag = [];
 //Vérifier que tous les tags sont présents dans la recette
 export const filterRecipesByTags = (recipes, tags) => {
 
-    console.log(recipes);
-
     const filteredRecipes = recipes.filter(recipe => {
         const { appliance, ustensils, ingredients } = recipe;
 

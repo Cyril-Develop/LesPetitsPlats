@@ -1,4 +1,3 @@
-
 import { displayRecipesCards } from "../pages/home.js";
 import { dropdowns } from "../pages/home.js";
 import { selectedTags } from "../pages/home.js";
@@ -21,8 +20,9 @@ export const mainSearch = () => {
         btnDelete.style.display = searchInputValue.length > 0 ? 'block' : 'none';
 
         if(searchInputValue.length > 2) {
-            if(selectedTags.length > 0) filterRecipesByTags(recipesFilteredByTag, selectedTags);
-            else if(selectedTags.length === 0) binarySearch(organizeRecipesByKeywords, searchInputValue);
+            selectedTags.length > 0 ? 
+                filterRecipesBySearch(recipesFilteredByTag, searchInputValue) : 
+                binarySearch(organizeRecipesByKeywords, searchInputValue);
         };
 
         //si le champs de recherche est vide et qu'il y a des tags sélectionnés, afficher les recettes correspondantes aux tags sélectionnés
