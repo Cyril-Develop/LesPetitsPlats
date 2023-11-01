@@ -4,7 +4,6 @@ import { updateCurrentRecipes } from "../pages/home.js";
 
 export let recipesFilteredByTag = [];
 
-//Vérifier que tous les tags sont présents dans la recette
 export const filterRecipesByTags = (recipes, tags) => {
 
     const filteredRecipes = recipes.filter(recipe => {
@@ -12,7 +11,7 @@ export const filterRecipesByTags = (recipes, tags) => {
 
         const normalizedTags = tags.map(tag => normalizeString(tag));
 
-        // Vérifie que tous les tags sont présents dans la recette
+        // Vérifier que tous les tags sont présents dans la recette
         return (
             normalizedTags.every(tag => 
                 normalizeString(appliance).includes(tag) ||

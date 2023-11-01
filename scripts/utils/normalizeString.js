@@ -1,4 +1,4 @@
-// Fonction pour supprimer les accents et convertir en minuscules
+// Normaliser le texte
 export const normalizeString = str => {
     return str
         .toLowerCase()

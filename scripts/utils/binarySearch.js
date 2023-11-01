@@ -1,4 +1,3 @@
-
 import { updateCurrentRecipes } from "../pages/home.js";
 import { updateWithFilteredRecipes } from "./updateWithFilteredRecipes.js";
 import { allRecipes } from "../pages/home.js";
@@ -17,7 +16,7 @@ export const  binarySearch = (keywords, searchValue) => {
             // Correspondance trouvée, ajoutez les identifiants des recettes correspondantes
             matchingRecipeIds.push(...keywords[mid].recipes);
 
-            // Recherche au-dessus et en dessous
+            // Recherche au-dessus et en dessous 
             let indexAbove = mid - 1;
             let indexBelow = mid + 1;
 
