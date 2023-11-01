@@ -4,7 +4,6 @@ import { updateCurrentRecipes } from "../pages/home.js";
 
 export let recipesFilteredByTag = [];
 
-//Vérifier que tous les tags sont présents dans la recette
 export const filterRecipesByTags = (recipes, tags) => {
 
     const filteredRecipes = recipes.filter(recipe => {
