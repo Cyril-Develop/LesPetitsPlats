@@ -49,7 +49,7 @@
 
         img {
             width: 100%;
-            height: 40%;
+            height: 50%;
             object-fit: cover;
             object-position: center;
 
@@ -60,7 +60,7 @@
 
         &_infos {
             @include flex(column);
-            height: 60%;
+            height: 50%;
             gap: 20px;
             padding: 20px;
             overflow-y: scroll;
@@ -122,12 +122,12 @@
                     font-size: clamp(.9rem, 1vw, .9rem);
 
                     @media screen and (max-width: 500px) {
-                        gap: 10px 0px;
+                        gap: 10px;
                     }
 
                     li {
                         @include flex(column);
-                        width: 50%;
+                        width: 45%;
 
                         span:nth-child(1) {
                             font-weight: bold;
