@@ -63,7 +63,7 @@ export const organizeRecipesByKeywords = uniqueWords.map(word => {
     };
 });
 
-const displayDropdownSection = async () => {
+const displayDropdownSection = () => {
     const numberOfRecipes = document.querySelector('.recipes_count');
     numberOfRecipes.textContent = `${allRecipes.length} recettes`;
 
@@ -75,7 +75,7 @@ const displayDropdownSection = async () => {
     dropdowns.forEach(dropdown => filterSection.insertBefore(dropdown.createDropdown(), numberOfRecipes));
 };
 
-export const displayRecipesCards = async () => {
+export const displayRecipesCards = () => {
     allRecipes
         .map(recipe => new Recipe(recipe))
         .forEach(recipe => {
