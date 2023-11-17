@@ -66,8 +66,6 @@ export default class Dropdown {
     search(inputValue) {
         const itemsToSearch = !this.filteredItems.length ? this.items : this.filteredItems;
 
-        console.log(itemsToSearch);
-
         const match = itemsToSearch.filter(item => {
             const normalizedItem = normalizeString(item);
             return normalizedItem.includes(inputValue);
