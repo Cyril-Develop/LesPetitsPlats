@@ -423,7 +423,7 @@ ul {
   border-radius: 10px;
 }
 .header_cta div input::placeholder {
-  font-size: clamp(0.9rem, 1.8vw, 1.6rem);
+  font-size: clamp(0.8rem, 1.8vw, 1.6rem);
 }
 .header_cta div input:focus {
   outline: 2px solid #FFD15B;
