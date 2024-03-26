@@ -1,6 +1,6 @@
 # Formation Développeur d'application - Javascript React
 
-## 📎Projet 7: Développez un algorithme de recherche en JavaScript
+## 📎Projet 7: Les petits plats - Développez un algorithme de recherche en JavaScript
 
 ![homepage-desktop](./images/screenshot/desktop.png)
 
