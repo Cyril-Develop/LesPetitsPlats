@@ -1,7 +1,6 @@
 import { normalizeString } from "./normalizeString.js";
 import { updateWithFilteredRecipes } from "./updateWithFilteredRecipes.js";
 import { updateCurrentRecipes } from "../pages/home.js";
-import { allRecipes } from "../pages/home.js";
 
 export const filterRecipes = (recipes, tags, inputValue) => {
     const normalizedTags = tags.map(tag => normalizeString(tag));
@@ -27,8 +26,7 @@ export const filterRecipes = (recipes, tags, inputValue) => {
 
         return tagsMatch && searchMatch;
     });
-
-    updateCurrentRecipes(allRecipes);
+    updateCurrentRecipes(filteredRecipes);
 
     updateWithFilteredRecipes(filteredRecipes);
 };
